@@ -1,6 +1,6 @@
 # Home Service Robot
 
-<p align="center"><img src="./images/homeServiceRobot.gif"></p>
+<p align="center"><img src="./Images/homeServiceRobot.gif"></p>
 
 **Project Goals**
 
