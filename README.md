@@ -37,6 +37,8 @@ Use the knowledge gathered through Robotics NanoDegree to configure robot to be 
 ├── map
 │   ├── mymap.pgm
 │   ├── mymap.yaml
+├── worlds
+│   ├── myworld.world
 ├── pick_objects
 │   └── src
 │       ├── pick_objects.cpp
@@ -70,6 +72,7 @@ This directory represents the main project's `src` folder structure with followi
 * **images** - GIF for Final Output
 * **add_markers** - add marker node C++ node
 * **map** - map data
+* **worlds** - world file used
 * **pick_objects** - pick-objects C++ node code
 * **rvizConfig** - folder with rViz configurations used with some launch scripts
 * **scripts** - shell scripts
