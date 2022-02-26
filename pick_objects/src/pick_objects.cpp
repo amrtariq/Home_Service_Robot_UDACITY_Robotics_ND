@@ -48,7 +48,9 @@ int main(int argc, char** argv){
 
   // Define a position and orientation for the robot to reach
   goal.target_pose.pose.position.x = 1.0;
-  goal.target_pose.pose.orientation.z = 0.1;
+  goal.target_pose.pose.position.y = 0.0;
+  goal.target_pose.pose.orientation.z = 0.0;
+  goal.target_pose.pose.orientation.w = 1.0;
 
   //goal was sent here
   if(send_goal_local(goal,ac))
@@ -59,8 +61,10 @@ int main(int argc, char** argv){
   	goal.target_pose.header.stamp = ros::Time::now();
 
   	// Define a position and orientation for the robot to reach
-  	goal.target_pose.pose.position.x = 2.0;
-  	goal.target_pose.pose.orientation.z = 0.1;
+  	goal.target_pose.pose.position.x = 3.2;
+    goal.target_pose.pose.position.y = 2.0;
+  	goal.target_pose.pose.orientation.z = 0.0;
+    goal.target_pose.pose.orientation.w = 1.0;
   	if(send_goal_local(goal,ac))
   	{
   		ROS_INFO("Robot Reached Drop Position");

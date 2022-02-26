@@ -8,11 +8,14 @@ int pos_number=0, action_done=0;
 void marker_check(const nav_msgs::Odometry::ConstPtr& msg)
 {
   ROS_INFO("Seq: [%d]", msg->header.seq);
-  ROS_INFO("Position-> x: [%f], Position-> y: [%f], Orientation-> Z: [%f]", msg->pose.pose.position.x, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
+  ROS_INFO("Position-> x: [%f], Position-> y: [%f], Orientation-> Z: [%f], Orientation-> W: [%f]", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
   ROS_INFO("Current State is: %d", pos_number);
+  ROS_INFO("Action Done: %d", action_done);
   //if position reached
-  if (action_done && (msg->pose.pose.position.x <= marker.pose.position.x+0.2) && (msg->pose.pose.position.x >= marker.pose.position.x-0.2) && (msg->pose.pose.position.y <= marker.pose.position.y+0.2) && (msg->pose.pose.position.y >= marker.pose.position.y-0.2)
-    && (msg->pose.pose.orientation.z >= marker.pose.orientation.z-0.2) && (msg->pose.pose.orientation.z <= marker.pose.orientation.z+0.2))
+  if ( action_done && (msg->pose.pose.position.x <= marker.pose.position.x+0.3) && (msg->pose.pose.position.x >= marker.pose.position.x-0.3) 
+    && (msg->pose.pose.position.y <= marker.pose.position.y+0.3) && (msg->pose.pose.position.y >= marker.pose.position.y-0.3)
+    && (msg->pose.pose.orientation.w >= marker.pose.orientation.w-0.3) && (msg->pose.pose.orientation.w <= marker.pose.orientation.w+0.3)
+    && (msg->pose.pose.orientation.z >= marker.pose.orientation.z-0.3) && (msg->pose.pose.orientation.z <= marker.pose.orientation.z+0.3))
   {
     pos_number++;
     action_done=0;
@@ -81,7 +84,6 @@ int main( int argc, char** argv )
         return 0;
       }
       ROS_WARN_ONCE("Please create a subscriber to the marker");
-      sleep(1);
     }
 
     //if all actions done keep track of odom messages
@@ -103,21 +105,21 @@ int main( int argc, char** argv )
           marker.pose.position.z = 2;
           marker.pose.orientation.x = 0.0;
           marker.pose.orientation.y = 0.0;
-          marker.pose.orientation.z = 0.1;
-          marker.pose.orientation.w = 0.0;
+          marker.pose.orientation.z = 0.0;
+          marker.pose.orientation.w = 1.0;
           action_done=1;
         }
         break;
       case 1:
         if(!action_done){
 
-          marker.pose.position.x = 2;
-          marker.pose.position.y = 0;
+          marker.pose.position.x = 3.2;
+          marker.pose.position.y = 2;
           marker.pose.position.z = 2;
           marker.pose.orientation.x = 0.0;
           marker.pose.orientation.y = 0.0;
-          marker.pose.orientation.z = 0.1;
-          marker.pose.orientation.w = 0.0;
+          marker.pose.orientation.z = 0.0;
+          marker.pose.orientation.w = 1.0;
           marker.action = visualization_msgs::Marker::DELETEALL;
           ROS_INFO("Pickup Pos Reached, Marker Deleted");
           action_done=1;
