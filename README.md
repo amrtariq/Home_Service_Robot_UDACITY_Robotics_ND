@@ -7,7 +7,8 @@
 Use the knowledge gathered through Robotics NanoDegree to configure robot to be able to map, navigate send and track goals in a simulated designed enviroment.
 
 * Enviroment Done using Building Editor in Gazebo.
-* Teleoperate the robot and manually to create a map using SLAM.
+* Teleoperate the robot manually to create a map using SLAM gmapping.
+* Test Navigation through created map.
 * make pick_objects node to send two goals to robot one after another.
 * make add_markers node to show/hide markers either with pre-set delay or depending on robot reaching goals.
 
